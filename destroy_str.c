@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   destroy_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 16:58:26 by cfontain          #+#    #+#             */
-/*   Updated: 2022/07/11 11:32:51 by cfontain         ###   ########.fr       */
+/*   Created: 2022/08/05 10:52:24 by cfontain          #+#    #+#             */
+/*   Updated: 2022/08/26 13:01:11 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	destroy_str(char **str)
 {
-	size_t	i;
+	int		i;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i] != '\0')
+	if (str)
+	{
+		while (str[i])
+		{
+			free (str[i]);
 			i++;
-	return (i);
+		}
+		free (str);
+	}	
 }

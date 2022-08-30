@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:03:00 by cfontain          #+#    #+#             */
-/*   Updated: 2022/05/13 16:42:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:32:17 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,61 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_split
+{
+	char	**str;
+	int		len;
+	int		count;
+}	t_split;
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif 
+
+void	destroy_str(char **str);
+
+void	ft_printab(char **str);
+int		ft_printf_error(const char *str, ...);
+void	ft_checkpourcent_error(const char *str, va_list list, int *i, int *len);
+void	ft_putnbr_printf_error(long int nb, int *len);
+void	ft_putnegative_error(int *len);
+void	ft_writenbr_error(unsigned long int nb, int *len);
+void	ft_putstr_printf_error(char *str, int *len);
+void	ft_putchar_printf_error(int a, int *len);
+void	ft_pointerisnullornot_error(unsigned long nb, int *len);
+void	ft_putnbrhex_printf_error(unsigned long int nb, int *len);
+void	ft_putnbrhexupper_error(unsigned int nb, int *len);
+void	ft_writenbrupper_error(unsigned long int nb, int *len);
+
+int		ft_printf(const char *str, ...);
+void	ft_checkpourcent(const char *str, va_list list, int *i, int *len);
+void	ft_putnbr_printf(long int nb, int *len);
+void	ft_putnegative(int *len);
+void	ft_writenbr(unsigned long int nb, int *len);
+void	ft_putstr_printf(char *str, int *len);
+void	ft_putchar_printf(int a, int *len);
+void	ft_pointerisnullornot(unsigned long nb, int *len);
+void	ft_putnbrhex_printf(unsigned long int nb, int *len);
+void	ft_putnbrhexupper(unsigned int nb, int *len);
+void	ft_writenbrupper(unsigned long int nb, int *len);
+
+char	*get_next_line(int fd);
+char	*ft_stock_line(char	*line, int *trigger);
+char	*ft_read_line(int fd, char *temp, char *line, int i);
+char	*ft_final_line(char	*line);
+int		ft_end_line(char *line);
+char	*ft_strdupgnl(char *s);
+char	*ft_strjoingnl(char *s1, char *s2);
+char	*ft_callocbzerognl(size_t nmemb, size_t size);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

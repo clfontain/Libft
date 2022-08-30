@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:06:28 by cfontain          #+#    #+#             */
-/*   Updated: 2022/05/11 09:40:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:41:42 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,29 +92,31 @@ static int	ft_strlenght(char const *s, char c, int *j)
 
 char	**ft_split(char const *s, char c)
 {
+	t_split	split;
 	int		i;
 	int		j;
-	int		count;
-	char	**str;
-	int		len;
 
+	split.str = NULL;
+	split.count = 0;
 	i = 0;
 	j = 0;
-	len = 0;
-	count = (ft_countstr(s, c));
-	str = (char **)malloc(sizeof(char *) * (count + 1));
-	if (str == NULL)
+	split.len = 0;
+	split.count = (ft_countstr(s, c));
+	split.str = (char **)malloc(sizeof(char *) * (split.count + 1));
+	if (split.str == NULL)
 		return (NULL);
-	while (i < count)
+	while (i < split.count)
 	{
-		str[i] = 0;
-		len = ft_strlenght(s, c, &j);
-		str[i] = ft_initstr2(str[i], len);
-		str[i] = ft_initstr(s, c, str[i], &j);
+		split.str[i] = 0;
+		split.len = ft_strlenght(s, c, &j);
+		split.str[i] = ft_initstr2(split.str[i], split.len);
+		if (split.str[i] == NULL)
+			return (destroy_str(split.str), NULL);
+		split.str[i] = ft_initstr(s, c, split.str[i], &j);
 		i++;
 	}
-	str[i] = 0;
-	return (str);
+	split.str[i] = 0;
+	return (split.str);
 }
 
 /*

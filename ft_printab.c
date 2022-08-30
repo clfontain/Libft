@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 16:58:26 by cfontain          #+#    #+#             */
-/*   Updated: 2022/07/11 11:32:51 by cfontain         ###   ########.fr       */
+/*   Created: 2022/08/30 10:30:03 by cfontain          #+#    #+#             */
+/*   Updated: 2022/08/30 10:30:20 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_printab(char **str)
 {
-	size_t	i;
+	int		i;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i] != '\0')
+	if (str)
+	{
+		while (str[i] != NULL)
+		{
+			ft_printf("%s\n", str[i]);
 			i++;
-	return (i);
+		}
+	}
 }

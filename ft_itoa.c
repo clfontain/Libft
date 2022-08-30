@@ -45,9 +45,7 @@ static char	*ft_initstr(int len, long int n)
 
 	str = malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 	ft_memset(str, 0, len + 1);
 	if (n < 0)
 	{
